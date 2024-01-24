@@ -21,13 +21,14 @@
     <!--</assertionScoreDirectorFactory>-->
   </scoreDirectorFactory>
 
-  <termination>
-    <bestScoreLimit>0</bestScoreLimit>
-  </termination>
+
   <constructionHeuristic>
     <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
   </constructionHeuristic>
   <localSearch>
+    <termination>
+      <bestScoreLimit>0</bestScoreLimit>
+    </termination>
     <changeMoveSelector>
       <selectionOrder>ORIGINAL</selectionOrder>
     </changeMoveSelector>
@@ -41,6 +42,17 @@
     <forager>
       <!-- Real world problems require use of <acceptedCountLimit> -->
     </forager>
+  </localSearch>
+  <localSearch>
+    <termination>
+      <stepCountLimit>10</stepCountLimit>
+    </termination>
+    <moveIteratorFactory>
+      <moveIteratorFactoryClass>ai.timefold.solver.examples.nqueens.moves.ChangeMoveFactory</moveIteratorFactoryClass>
+    </moveIteratorFactory>
+    <acceptor>
+      <acceptorType>HILL_CLIMBING</acceptorType>
+    </acceptor>
   </localSearch>
 
   <!-- To scale out, replace <localSearch> with this configuration: -->
